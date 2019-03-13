@@ -97,6 +97,7 @@ namespace CardGames.GameLogic
 			}
 		}
 			
+       
 		public void FlipNextCard()
 		{
 			if (_deck.CardsRemaining > 0)			// have cards...
