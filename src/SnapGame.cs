@@ -10,7 +10,7 @@ namespace CardGames
         {
             Bitmap cards;
             cards = SwinGame.LoadBitmapNamed ("Cards", "Cards.png");
-            SwinGame.BitmapSetCellDetails (cards, 82, 110, 13, 5, 53); 
+            SwinGame.BitmapSetCellDetails (cards, 82, 110, 13, 5, 53);
 			SwinGame.LoadFontNamed ("GameFont", "Chunkfive.otf", 12);     // set the cells in the bitmap to match the cards
         }
 
@@ -25,8 +25,24 @@ namespace CardGames
 
 			if (SwinGame.KeyTyped (KeyCode.vk_SPACE))
 			{
-				myGame.Start();
+				myGame.FlipNextCard();
 			}
+
+      if(myGame.IsStarted)
+      {
+        if(SwinGame.KeyTyped(KeyCode.vk_LSHIFT) && SwinGame.KeyTyped(KeyCode.vk_RSHIFT))
+        {
+          //TODO: add sound effects
+        }
+        else if(SwinGame.KeyTyped(KeyCode.vk_LSHIFT))
+        {
+          myGame.PlayerHit(0);
+        }
+        else if(SwinGame.KeyTyped(KeyCode.vk_RSHIFT))
+        {
+          myGame.PlayerHit(1);
+        }
+      }
 		}
 
 		/// <summary>
@@ -74,7 +90,7 @@ namespace CardGames
 
 			//Load the card images and set their cell details
             LoadResources();
-            
+
 			// Create the game!
 			Snap myGame = new Snap ();
 
